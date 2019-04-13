@@ -62,54 +62,54 @@ import com.wtl.ui.Ble_Activity;
 import com.wtl.util.CRC16M;
 
 /**
- * ÌØ±ğËµÃ÷£ºWTL_BLEÖúÊÖÊÇÉÏº£ÍşÌØÁ¦º¸½Ó¿Æ¼¼ÓĞÏŞ¹«Ë¾¶À×ÔÑĞ·¢µÄÊÖ»úAPP£¬ÓÃÓÚÓÃ»§Á¬½Ó08À¶ÑÀÄ£¿é¡£
- * ±¾Èí¼şÖ»ÄÜÖ§³Ö°²×¿°æ±¾4.3²¢ÇÒÓĞÀ¶ÑÀ4.0µÄÊÖ»úÊ¹ÓÃ¡£
+ * ç‰¹åˆ«è¯´æ˜ï¼šWTL_BLEåŠ©æ‰‹æ˜¯ä¸Šæµ·å¨ç‰¹åŠ›ç„Šæ¥ç§‘æŠ€æœ‰é™å…¬å¸ç‹¬è‡ªç ”å‘çš„æ‰‹æœºAPPï¼Œç”¨äºç”¨æˆ·è¿æ¥08è“ç‰™æ¨¡å—ã€‚
+ * æœ¬è½¯ä»¶åªèƒ½æ”¯æŒå®‰å“ç‰ˆæœ¬4.3å¹¶ä¸”æœ‰è“ç‰™4.0çš„æ‰‹æœºä½¿ç”¨ã€‚
 
  * **/
 /**
- * @Description: TODO<MainActivityÀàÊµÏÖ´ò¿ªÀ¶ÑÀ¡¢É¨ÃèÀ¶ÑÀ>
- * @author ÉÏº£ÍşÌØÁ¦º¸½Ó¿Æ¼¼ÓĞÏŞ¹«Ë¾
- * @data: 2018-10-16 ÉÏÎç10:28:18
+ * @Description: TODO<MainActivityç±»å®ç°æ‰“å¼€è“ç‰™ã€æ‰«æè“ç‰™>
+ * @author ä¸Šæµ·å¨ç‰¹åŠ›ç„Šæ¥ç§‘æŠ€æœ‰é™å…¬å¸
+ * @data: 2018-10-16 ä¸Šåˆ10:28:18
  * @version: V1.0
  */
 public class CopyOfMainActivity extends Activity{
 	/**
-	 * 1¡¢Ğ£ÑéÊı¾İµÄµ±Ç°×´Ì¬
-	 * 2¡¢ÕıÈ·ĞÔ
-	 * 3¡¢Ò³ÃæÀ´Ô´
-	 * 4¡¢ÖØ·¢Ê±ÓÃ Ê±¼ä´Á
+	 * 1ã€æ ¡éªŒæ•°æ®çš„å½“å‰çŠ¶æ€ æµ‹è¯•
+	 * 2ã€æ­£ç¡®æ€§
+	 * 3ã€é¡µé¢æ¥æº
+	 * 4ã€é‡å‘æ—¶ç”¨ æ—¶é—´æˆ³
 	 */
 	private static HashMap<String, String> checkData=new HashMap<String, String>();
 	private static HashMap<String, String> checkPage=new HashMap<String, String>();
 	private static HashMap<String, Boolean> checkStatus=new HashMap<String, Boolean>();
 	private static HashMap<String, Long> checkTime=new HashMap<String, Long>();
-	//ÖØ·¢Ê±¼ä¼ä¸ô
+	//é‡å‘æ—¶é—´é—´éš”
 	private static long  sechelTime=1400;
 	/**
-	 * ¶¨Ê±Æ÷
+	 * å®šæ—¶å™¨
 	 */
 	private static Timer timer = new Timer(); 
 	private static TimerTask task ;
 	
-	// É¨ÃèÀ¶ÑÀ°´Å¥
+	// æ‰«æè“ç‰™æŒ‰é’®
 //	private Button scan_btn;
 	private Button test_btn;
 	public static  String scan_btn_html="startScan";
 	public static  String bleRespInfo="empty";
-	// À¶ÑÀÊÊÅäÆ÷
+	// è“ç‰™é€‚é…å™¨
 	BluetoothAdapter mBluetoothAdapter;
-	// À¶ÑÀĞÅºÅÇ¿¶È
+	// è“ç‰™ä¿¡å·å¼ºåº¦
 	private ArrayList<Integer> rssis;
-	// ×Ô¶¨ÒåAdapter
+	// è‡ªå®šä¹‰Adapter
 //	LeDeviceListAdapter mleDeviceListAdapter;
-	// listviewÏÔÊ¾É¨Ãèµ½µÄÀ¶ÑÀĞÅÏ¢
+	// listviewæ˜¾ç¤ºæ‰«æåˆ°çš„è“ç‰™ä¿¡æ¯
 //	ListView lv;
-	// ÃèÊöÉ¨ÃèÀ¶ÑÀµÄ×´Ì¬
+	// æè¿°æ‰«æè“ç‰™çš„çŠ¶æ€
 	private boolean mScanning;
 	private boolean scan_flag;
 //	private Handler mHandler;
 	int REQUEST_ENABLE_BT = 1;
-	// À¶ÑÀÉ¨ÃèÊ±¼ä
+	// è“ç‰™æ‰«ææ—¶é—´
 	private static final long SCAN_PERIOD = 10000;
 	private ArrayAdapter<String> aa;
 	
@@ -122,58 +122,58 @@ public class CopyOfMainActivity extends Activity{
 //    }
 
 	private final static String TAG = Ble_Activity.class.getSimpleName();
-	// À¶ÑÀ4.0µÄUUID,ÆäÖĞ0000ffe1-0000-1000-8000-00805f9b34fbÊÇ¹ãÖİ»ã³ĞĞÅÏ¢¿Æ¼¼ÓĞÏŞ¹«Ë¾08À¶ÑÀÄ£¿éµÄUUID
+	// è“ç‰™4.0çš„UUID,å…¶ä¸­0000ffe1-0000-1000-8000-00805f9b34fbæ˜¯å¹¿å·æ±‡æ‰¿ä¿¡æ¯ç§‘æŠ€æœ‰é™å…¬å¸08è“ç‰™æ¨¡å—çš„UUID
 	public static String HEART_RATE_MEASUREMENT = "0000ffe1-0000-1000-8000-00805f9b34fb";
 	public static String EXTRAS_DEVICE_NAME = "DEVICE_NAME";
 	public static String EXTRAS_DEVICE_RESP = "DEVICE_RESP";
 	public static String EXTRAS_DEVICE_ADDRESS = "DEVICE_ADDRESS";
 	public static String EXTRAS_DEVICE_RSSI = "RSSI";
-	// À¶ÑÀÁ¬½Ó×´Ì¬
+	// è“ç‰™è¿æ¥çŠ¶æ€
 	private boolean mConnected = false;
 	private String status = "disconnected";
-	// À¶ÑÀÃû×Ö
+	// è“ç‰™åå­—
 	private String mDeviceName;
-	// À¶ÑÀµØÖ·
+	// è“ç‰™åœ°å€
 	private String mDeviceAddress;
-	// À¶ÑÀĞÅºÅÖµ
+	// è“ç‰™ä¿¡å·å€¼
 	private String mRssi;
 	private Bundle b;
 	private String rev_str = "";
 	private String respData;
-	// À¶ÑÀservice,¸ºÔğºóÌ¨µÄÀ¶ÑÀ·şÎñ
+	// è“ç‰™service,è´Ÿè´£åå°çš„è“ç‰™æœåŠ¡
 	private static BluetoothLeService mBluetoothLeService;
-	// ÎÄ±¾¿ò£¬ÏÔÊ¾½ÓÊÜµÄÄÚÈİ
+	// æ–‡æœ¬æ¡†ï¼Œæ˜¾ç¤ºæ¥å—çš„å†…å®¹
 	private TextView send_tv, connect_state, resp_bit_data, preCurrentNum,
 			realCurrentNum, preVoltageNum, realVoltageNum;
-	private String connect_status;// Á¬½Ó×´Ì¬
-	// ·¢ËÍ°´Å¥
+	private String connect_status;// è¿æ¥çŠ¶æ€
+	// å‘é€æŒ‰é’®
 	private Button send_btn;
-	// ÎÄ±¾±à¼­¿ò
+	// æ–‡æœ¬ç¼–è¾‘æ¡†
 	private EditText send_current;
 	private EditText send_voltage;
 	// private ScrollView rev_sv;
 	private ArrayList<ArrayList<BluetoothGattCharacteristic>> mGattCharacteristics = new ArrayList<ArrayList<BluetoothGattCharacteristic>>();
-	// ×Ö·û´®³£Á¿
+	// å­—ç¬¦ä¸²å¸¸é‡
 	private String tempStr1 = "";
 	private String tempStr2 = "";
 	public JsInteration jsInteration = new JsInteration(){
 		
 	};
-	//À¶ÑÀ¼¯ºÏ map È¥³ıÖØ¸´µÄ
+	//è“ç‰™é›†åˆ map å»é™¤é‡å¤çš„
 	private Map<String,BleListBean> bleList =new HashMap<String,BleListBean>();
-	// À¶ÑÀÌØÕ÷Öµ
+	// è“ç‰™ç‰¹å¾å€¼
 	private static BluetoothGattCharacteristic target_chara = null;
 	private Handler mhandler = new Handler() {
-		// 2.ÖØĞ´ÏûÏ¢´¦Àíº¯Êı
+		// 2.é‡å†™æ¶ˆæ¯å¤„ç†å‡½æ•°
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
-			// ÅĞ¶Ï·¢ËÍµÄÏûÏ¢
+			// åˆ¤æ–­å‘é€çš„æ¶ˆæ¯
 			case 1: {
-				// ¸üĞÂView
+				// æ›´æ–°View
 				// String state = msg.getData().getString("connect_state");
 				// connect_state.setText(state);
 				connect_status = msg.getData().getString("connect_state");
-				// ×´Ì¬´«µİ¸ø html5Ò³Ãæ
+				// çŠ¶æ€ä¼ é€’ç»™ html5é¡µé¢
 //				SendDataToHtmlFucUtil.updateHtmlBleConnectStatus(connect_status, mWebView);
 				break;
 			}
@@ -188,16 +188,16 @@ public class CopyOfMainActivity extends Activity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_html);
-		//³õÊ¼»¯Òş²Ø°´Å¥
+		//åˆå§‹åŒ–éšè—æŒ‰é’®
 		test_btn = (Button) this.findViewById(R.id.scan_dev_btn);
-		// ³õÊ¼»¯À¶ÑÀ
+		// åˆå§‹åŒ–è“ç‰™
 		init_ble();
 		scan_flag = true;
 		
-		/* Æô¶¯À¶ÑÀservice */
+		/* å¯åŠ¨è“ç‰™service */
 		Intent gattServiceIntent = new Intent(this, BluetoothLeService.class);
 		bindService(gattServiceIntent, mServiceConnection, BIND_AUTO_CREATE);
-			//³õÊ¼»¯¶¨Ê±Æ÷
+			//åˆå§‹åŒ–å®šæ—¶å™¨
 			initTimer();
 			//webview
 		   mWebView = (WebView) findViewById(R.id.webView);
@@ -206,40 +206,40 @@ public class CopyOfMainActivity extends Activity{
 		    
 		    WebSettings webSettings = mWebView.getSettings();
 		    webSettings.setJavaScriptEnabled(true);
-		    webSettings.setDefaultTextEncodingName("gbk");//ÉèÖÃ±àÂë¸ñÊ½
+		    webSettings.setDefaultTextEncodingName("gbk");//è®¾ç½®ç¼–ç æ ¼å¼
 		    mWebView.addJavascriptInterface(jsInteration, "android");
 		    mWebView.setWebViewClient(new WebViewClient() {
 		        @Override
 		        public boolean shouldOverrideUrlLoading(WebView view, String url) {
 		        	 nowUrl=url;
 		                mWebView.loadUrl(url);
-		                return false;//ÊÇÊôÓÚwebviewÀïµÄ
+		                return false;//æ˜¯å±äºwebviewé‡Œçš„
 //		            }
 		        }
 			    public boolean onJsAlert(WebView view, String url, String message, JsResult result) {
 			        return onJsAlert(view, url, message, result);
 			    }
 		    });  
-		    //ÅäÖÃÍê³É jsµ¯´°µÈ²Ù×÷
+		    //é…ç½®å®Œæˆ jså¼¹çª—ç­‰æ“ä½œ
 		    mWebView.setWebChromeClient(new WebChromeClient());
-		    //Çå³ı»º´æ
+		    //æ¸…é™¤ç¼“å­˜
 		    webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
 	}
 	private static void initTimer(){
 		task = new TimerTask() { 
 		    @Override 
 		    public void run() {
-		    	Boolean shutDownFlag =false;//ÖÕÖ¹µÄ±êÊ¶
-		    	//¼ì²éÊÇ·ñĞèÒªÖØ·¢
+		    	Boolean shutDownFlag =false;//ç»ˆæ­¢çš„æ ‡è¯†
+		    	//æ£€æŸ¥æ˜¯å¦éœ€è¦é‡å‘
 		    	for(String crcCode :checkStatus.keySet()){
 		    		if(!checkStatus.get(crcCode)){
 		    			shutDownFlag =true;
-		    			//ÊÇ·ñ´óÓÚËÄ°Ùms
+		    			//æ˜¯å¦å¤§äºå››ç™¾ms
 		    			
 		    			if((new Date().getTime() -checkTime.get(crcCode))>sechelTime){
-		    				//¸üĞÂÊ±¼ä´Á
+		    				//æ›´æ–°æ—¶é—´æˆ³
 		    				checkTime.put(crcCode,new Date().getTime());
-		    				//ÖØ·¢¸øÀ¶ÑÀÏûÏ¢
+		    				//é‡å‘ç»™è“ç‰™æ¶ˆæ¯
 		    				String regex = "(.{2})";
 		    				String data = checkData.get(crcCode).replaceAll (regex, "$1 ");
 		    				target_chara.setValue(HexCommandtoByte(data.getBytes()));
@@ -248,28 +248,28 @@ public class CopyOfMainActivity extends Activity{
 		    		}
 		    	}
 		    	if(!shutDownFlag){
-		    		//Ã»ÓĞÎ´Íê³ÉµÄÈÎÎñ Í£Ö¹
+		    		//æ²¡æœ‰æœªå®Œæˆçš„ä»»åŠ¡ åœæ­¢
 		    		task.cancel();
 		    	}
 		    } 
 		}; 
-		//ĞèÒªĞÂ½¨
+		//éœ€è¦æ–°å»º
 		timer =new Timer();
 		timer.schedule(task, sechelTime, sechelTime);
 	}
 	private void onCreate_old() {
 		setContentView(R.layout.activity_main);
-		// ³õÊ¼»¯¿Ø¼ş
+		// åˆå§‹åŒ–æ§ä»¶
 		// init();
-		// ³õÊ¼»¯À¶ÑÀ
+		// åˆå§‹åŒ–è“ç‰™
 		init_ble();
 		scan_flag = true;
 	}
 
 	/**
 	 * @Title: init
-	 * @Description: TODO(³õÊ¼»¯UI¿Ø¼ş)
-	 * @param ÎŞ
+	 * @Description: TODO(åˆå§‹åŒ–UIæ§ä»¶)
+	 * @param æ— 
 	 * @return void
 	 * @throws
 	 */
@@ -282,23 +282,23 @@ public class CopyOfMainActivity extends Activity{
 
 	/**
 	 * @Title: init_ble
-	 * @Description: TODO(³õÊ¼»¯À¶ÑÀ)
-	 * @param ÎŞ
+	 * @Description: TODO(åˆå§‹åŒ–è“ç‰™)
+	 * @param æ— 
 	 * @return void
 	 * @throws
 	 */
 	private void init_ble() {
-		// ÊÖ»úÓ²¼şÖ§³ÖÀ¶ÑÀ
+		// æ‰‹æœºç¡¬ä»¶æ”¯æŒè“ç‰™
 		if (!getPackageManager().hasSystemFeature(
 				PackageManager.FEATURE_BLUETOOTH_LE)) {
-			Toast.makeText(this, "²»Ö§³ÖBLE", Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, "ä¸æ”¯æŒBLE", Toast.LENGTH_SHORT).show();
 			finish();
 		}
 		// Initializes Bluetooth adapter.
-		// »ñÈ¡ÊÖ»ú±¾µØµÄÀ¶ÑÀÊÊÅäÆ÷
+		// è·å–æ‰‹æœºæœ¬åœ°çš„è“ç‰™é€‚é…å™¨
 		final BluetoothManager bluetoothManager = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
 		mBluetoothAdapter = bluetoothManager.getAdapter();
-		// ´ò¿ªÀ¶ÑÀÈ¨ÏŞ
+		// æ‰“å¼€è“ç‰™æƒé™
 		if (mBluetoothAdapter == null || !mBluetoothAdapter.isEnabled()) {
 			Intent enableBtIntent = new Intent(
 					BluetoothAdapter.ACTION_REQUEST_ENABLE);
@@ -308,7 +308,7 @@ public class CopyOfMainActivity extends Activity{
 	}
 
 	/*
-	 * µã»÷¿ªÊ¼É¨Ãè
+	 * ç‚¹å‡»å¼€å§‹æ‰«æ
 	 * to html5
 	 */
 	private void clickScan() {
@@ -321,7 +321,7 @@ public class CopyOfMainActivity extends Activity{
 		} else {
 
 			scanLeDevice(false);
-//			scan_btn.setText("É¨ÃèÉè±¸");
+//			scan_btn.setText("æ‰«æè®¾å¤‡");
 			scan_btn_html ="startScan";
 //			SendDataToHtmlFucUtil.updateHtmlBleScanBtnText(scan_btn_html, mWebView);
 		}
@@ -329,9 +329,9 @@ public class CopyOfMainActivity extends Activity{
 
 	/**
 	 * @Title: scanLeDevice
-	 * @Description: TODO(É¨ÃèÀ¶ÑÀÉè±¸ )
+	 * @Description: TODO(æ‰«æè“ç‰™è®¾å¤‡ )
 	 * @param enable
-	 *            (É¨ÃèÊ¹ÄÜ£¬true:É¨Ãè¿ªÊ¼,false:É¨ÃèÍ£Ö¹)
+	 *            (æ‰«æä½¿èƒ½ï¼Œtrue:æ‰«æå¼€å§‹,false:æ‰«æåœæ­¢)
 	 * @return void
 	 * @throws
 	 */
@@ -343,18 +343,18 @@ public class CopyOfMainActivity extends Activity{
 				public void run() {
 					mScanning = false;
 					scan_flag = true;
-//					scan_btn.setText("É¨ÃèÉè±¸");
+//					scan_btn.setText("æ‰«æè®¾å¤‡");
 					scan_btn_html ="startScan";
 //					SendDataToHtmlFucUtil.updateHtmlBleScanBtnText(scan_btn_html, mWebView);
 					Log.i("SCAN", "stop.....................");
 					mBluetoothAdapter.stopLeScan(mLeScanCallback);
 				}
 			}, SCAN_PERIOD);
-			/* ¿ªÊ¼É¨ÃèÀ¶ÑÀÉè±¸£¬´ømLeScanCallback »Øµ÷º¯Êı */
+			/* å¼€å§‹æ‰«æè“ç‰™è®¾å¤‡ï¼Œå¸¦mLeScanCallback å›è°ƒå‡½æ•° */
 			Log.i("SCAN", "begin.....................");
 			mScanning = true;
 			scan_flag = false;
-//			scan_btn.setText("Í£Ö¹É¨Ãè");
+//			scan_btn.setText("åœæ­¢æ‰«æ");
 			scan_btn_html="scaning";
 //			SendDataToHtmlFucUtil.updateHtmlBleScanBtnText(scan_btn_html, mWebView);
 			mBluetoothAdapter.startLeScan(mLeScanCallback);
@@ -368,7 +368,7 @@ public class CopyOfMainActivity extends Activity{
 	}
 
 	/**
-	 * À¶ÑÀÉ¨Ãè»Øµ÷º¯Êı ÊµÏÖÉ¨ÃèÀ¶ÑÀÉè±¸£¬»Øµ÷À¶ÑÀBluetoothDevice£¬¿ÉÒÔ»ñÈ¡name MACµÈĞÅÏ¢
+	 * è“ç‰™æ‰«æå›è°ƒå‡½æ•° å®ç°æ‰«æè“ç‰™è®¾å¤‡ï¼Œå›è°ƒè“ç‰™BluetoothDeviceï¼Œå¯ä»¥è·å–name MACç­‰ä¿¡æ¯
 	 * 
 	 * **/
 	private BluetoothAdapter.LeScanCallback mLeScanCallback = new BluetoothAdapter.LeScanCallback() {
@@ -381,7 +381,7 @@ public class CopyOfMainActivity extends Activity{
 			runOnUiThread(new Runnable() {
 				@Override
 				public void run() {
-					/* ½²É¨Ãèµ½Éè±¸µÄĞÅÏ¢Êä³öµ½listviewµÄÊÊÅäÆ÷ */
+					/* è®²æ‰«æåˆ°è®¾å¤‡çš„ä¿¡æ¯è¾“å‡ºåˆ°listviewçš„é€‚é…å™¨ */
 					//TODO 
 					BleListBean bean =new BleListBean();
 					bean.setAddress("\\\""+device.getAddress()+"\\\"");
@@ -402,9 +402,9 @@ public class CopyOfMainActivity extends Activity{
 	};
 
 	/**
-	 * @Description: TODO<×Ô¶¨ÒåÊÊÅäÆ÷Adapter,×÷ÎªlistviewµÄÊÊÅäÆ÷>
-	 * @author ¹ãÖİ»ã³ĞĞÅÏ¢¿Æ¼¼ÓĞÏŞ¹«Ë¾
-	 * @data: 2014-10-12 ÉÏÎç10:46:30
+	 * @Description: TODO<è‡ªå®šä¹‰é€‚é…å™¨Adapter,ä½œä¸ºlistviewçš„é€‚é…å™¨>
+	 * @author å¹¿å·æ±‡æ‰¿ä¿¡æ¯ç§‘æŠ€æœ‰é™å…¬å¸
+	 * @data: 2014-10-12 ä¸Šåˆ10:46:30
 	 * @version: V1.0
 	 */
 	private class LeDeviceListAdapter extends BaseAdapter {
@@ -451,16 +451,16 @@ public class CopyOfMainActivity extends Activity{
 		}
 
 		/**
-		 * ÖØĞ´getview
+		 * é‡å†™getview
 		 * 
 		 * **/
 		@Override
 		public View getView(int i, View view, ViewGroup viewGroup) {
 
 			// General ListView optimization code.
-			// ¼ÓÔØlistviewÃ¿Ò»ÏîµÄÊÓÍ¼
+			// åŠ è½½listviewæ¯ä¸€é¡¹çš„è§†å›¾
 			view = mInflator.inflate(R.layout.listitem, null);
-			// ³õÊ¼»¯Èı¸ötextviewÏÔÊ¾À¶ÑÀĞÅÏ¢
+			// åˆå§‹åŒ–ä¸‰ä¸ªtextviewæ˜¾ç¤ºè“ç‰™ä¿¡æ¯
 			TextView deviceAddress = (TextView) view
 					.findViewById(R.id.tv_deviceAddr);
 			TextView deviceName = (TextView) view
@@ -475,17 +475,17 @@ public class CopyOfMainActivity extends Activity{
 			return view;
 		}
 	}
-	  //Ê¹ÓÃWebviewµÄ Ê±ºò£¬·µ»Ø¼üÃ»ÓĞÖØĞ´µÄÊ±ºò»áÖ±½Ó¹Ø±Õ³ÌĞò£¬ÕâÊ±ºòÆäÊµÎÒÃÇÒªÆäÖ´ĞĞµÄÖªÊ¶»ØÍËµ½ÉÏÒ»²½µÄ²Ù×÷
+	  //ä½¿ç”¨Webviewçš„ æ—¶å€™ï¼Œè¿”å›é”®æ²¡æœ‰é‡å†™çš„æ—¶å€™ä¼šç›´æ¥å…³é—­ç¨‹åºï¼Œè¿™æ—¶å€™å…¶å®æˆ‘ä»¬è¦å…¶æ‰§è¡Œçš„çŸ¥è¯†å›é€€åˆ°ä¸Šä¸€æ­¥çš„æ“ä½œ
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        //ÕâÊÇÒ»¸ö¼àÌıÓÃµÄ°´¼üµÄ·½·¨£¬keyCode ¼àÌıÓÃ»§µÄ¶¯×÷£¬Èç¹ûÊÇ°´ÁË·µ»Ø¼ü£¬Í¬Ê±WebviewÒª·µ»ØµÄ»°£¬WebViewÖ´ĞĞ»ØÍË²Ù×÷£¬ÒòÎªmWebView.canGoBack()·µ»ØµÄÊÇÒ»¸öBooleanÀàĞÍ£¬ËùÒÔÎÒÃÇ°ÑËü·µ»ØÎªtrue
+        //è¿™æ˜¯ä¸€ä¸ªç›‘å¬ç”¨çš„æŒ‰é”®çš„æ–¹æ³•ï¼ŒkeyCode ç›‘å¬ç”¨æˆ·çš„åŠ¨ä½œï¼Œå¦‚æœæ˜¯æŒ‰äº†è¿”å›é”®ï¼ŒåŒæ—¶Webviewè¦è¿”å›çš„è¯ï¼ŒWebViewæ‰§è¡Œå›é€€æ“ä½œï¼Œå› ä¸ºmWebView.canGoBack()è¿”å›çš„æ˜¯ä¸€ä¸ªBooleanç±»å‹ï¼Œæ‰€ä»¥æˆ‘ä»¬æŠŠå®ƒè¿”å›ä¸ºtrue
         if(keyCode==KeyEvent.KEYCODE_BACK&&mWebView.canGoBack()){
             mWebView.goBack();
             return true;
         }
         return super.onKeyDown(keyCode, event);
     }
-	/***************************** À´×Ôble_activitybegig ****************************************/
+	/***************************** æ¥è‡ªble_activitybegig ****************************************/
 	/************************************ begin *************************************/
 
 //	private Handler mhandler = new Handler();
@@ -496,36 +496,36 @@ public class CopyOfMainActivity extends Activity{
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		// ½â³ı¹ã²¥½ÓÊÕÆ÷
+		// è§£é™¤å¹¿æ’­æ¥æ”¶å™¨
 		unregisterReceiver(mGattUpdateReceiver);
 		mBluetoothLeService = null;
 	}
 
-	// Activity³öÀ´Ê±ºò£¬°ó¶¨¹ã²¥½ÓÊÕÆ÷£¬¼àÌıÀ¶ÑÀÁ¬½Ó·şÎñ´«¹ıÀ´µÄÊÂ¼ş
+	// Activityå‡ºæ¥æ—¶å€™ï¼Œç»‘å®šå¹¿æ’­æ¥æ”¶å™¨ï¼Œç›‘å¬è“ç‰™è¿æ¥æœåŠ¡ä¼ è¿‡æ¥çš„äº‹ä»¶
 //	@Override
 //	protected void onResume() {
 //		super.onResume();
-//		// °ó¶¨¹ã²¥½ÓÊÕÆ÷
+//		// ç»‘å®šå¹¿æ’­æ¥æ”¶å™¨
 //		registerReceiver(mGattUpdateReceiver, makeGattUpdateIntentFilter());
 //		if (mBluetoothLeService != null) {
-//			// ¸ù¾İÀ¶ÑÀµØÖ·£¬½¨Á¢Á¬½Ó
+//			// æ ¹æ®è“ç‰™åœ°å€ï¼Œå»ºç«‹è¿æ¥
 //			final boolean result = mBluetoothLeService.connect(mDeviceAddress);
 //			Log.d(TAG, "Connect request result=" + result);
 //		}
 //	}
 	
 	private void connectBle(){
-		// °ó¶¨¹ã²¥½ÓÊÕÆ÷
+		// ç»‘å®šå¹¿æ’­æ¥æ”¶å™¨
 			registerReceiver(mGattUpdateReceiver, makeGattUpdateIntentFilter());
 			if (mBluetoothLeService != null) {
-				// ¸ù¾İÀ¶ÑÀµØÖ·£¬½¨Á¢Á¬½Ó
+				// æ ¹æ®è“ç‰™åœ°å€ï¼Œå»ºç«‹è¿æ¥
 				final boolean result = mBluetoothLeService.connect(mDeviceAddress);
 				Log.d(TAG, "Connect request result=" + result);
 			}
 	}
 
 	/**
-	 * ±¨ÎÄÊı¾İ½âÎöº¯Êı
+	 * æŠ¥æ–‡æ•°æ®è§£æå‡½æ•°
 	 * 
 	 * @param respData
 	 * @return
@@ -557,7 +557,7 @@ public class CopyOfMainActivity extends Activity{
 		return respInfo;
 	}
 
-	/* BluetoothLeService°ó¶¨µÄ»Øµ÷º¯Êı */
+	/* BluetoothLeServiceç»‘å®šçš„å›è°ƒå‡½æ•° */
 	private final ServiceConnection mServiceConnection = new ServiceConnection() {
 
 		@Override
@@ -571,7 +571,7 @@ public class CopyOfMainActivity extends Activity{
 			}
 			// Automatically connects to the device upon successful start-up
 			// initialization.
-			// ¸ù¾İÀ¶ÑÀµØÖ·£¬Á¬½ÓÉè±¸
+			// æ ¹æ®è“ç‰™åœ°å€ï¼Œè¿æ¥è®¾å¤‡
 			mBluetoothLeService.connect(mDeviceAddress);
 
 		}
@@ -584,41 +584,41 @@ public class CopyOfMainActivity extends Activity{
 	};
 
 	/**
-	 * ¹ã²¥½ÓÊÕÆ÷£¬¸ºÔğ½ÓÊÕBluetoothLeServiceÀà·¢ËÍµÄÊı¾İ
+	 * å¹¿æ’­æ¥æ”¶å™¨ï¼Œè´Ÿè´£æ¥æ”¶BluetoothLeServiceç±»å‘é€çš„æ•°æ®
 	 */
 	private final BroadcastReceiver mGattUpdateReceiver = new BroadcastReceiver() {
 		@Override
 		public void onReceive(Context context, Intent intent) {
 			final String action = intent.getAction();
-			if (BluetoothLeService.ACTION_GATT_CONNECTED.equals(action))// GattÁ¬½Ó³É¹¦
+			if (BluetoothLeService.ACTION_GATT_CONNECTED.equals(action))// Gattè¿æ¥æˆåŠŸ
 			{
 				mConnected = true;
 				status = "connected";
-				// ¸üĞÂÁ¬½Ó×´Ì¬
+				// æ›´æ–°è¿æ¥çŠ¶æ€
 				updateConnectionState(status);
 				System.out.println("BroadcastReceiver :" + "device connected");
 
-			} else if (BluetoothLeService.ACTION_GATT_DISCONNECTED// GattÁ¬½ÓÊ§°Ü
+			} else if (BluetoothLeService.ACTION_GATT_DISCONNECTED// Gattè¿æ¥å¤±è´¥
 					.equals(action)) {
 				mConnected = false;
 				status = "disconnected";
-				// ¸üĞÂÁ¬½Ó×´Ì¬
+				// æ›´æ–°è¿æ¥çŠ¶æ€
 				updateConnectionState(status);
 				System.out.println("BroadcastReceiver :"
 						+ "device disconnected");
 
-			} else if (BluetoothLeService.ACTION_GATT_SERVICES_DISCOVERED// ·¢ÏÖGATT·şÎñÆ÷
+			} else if (BluetoothLeService.ACTION_GATT_SERVICES_DISCOVERED// å‘ç°GATTæœåŠ¡å™¨
 					.equals(action)) {
 				// Show all the supported services and characteristics on the
 				// user interface.
-				// »ñÈ¡Éè±¸µÄËùÓĞÀ¶ÑÀ·şÎñ
+				// è·å–è®¾å¤‡çš„æ‰€æœ‰è“ç‰™æœåŠ¡
 				displayGattServices(mBluetoothLeService
 						.getSupportedGattServices());
 				System.out.println("BroadcastReceiver :"
 						+ "device SERVICES_DISCOVERED");
-			} else if (BluetoothLeService.ACTION_DATA_AVAILABLE.equals(action))// ÓĞĞ§Êı¾İ
+			} else if (BluetoothLeService.ACTION_DATA_AVAILABLE.equals(action))// æœ‰æ•ˆæ•°æ®
 			{
-				// ´¦Àí·¢ËÍ¹ıÀ´µÄÊı¾İ
+				// å¤„ç†å‘é€è¿‡æ¥çš„æ•°æ®
 //				buildCurrentVoltageData(intent.getExtras().getString(
 //						BluetoothLeService.EXTRA_DATA));
 				bleRespInfo=intent.getExtras().getString(
@@ -630,17 +630,17 @@ public class CopyOfMainActivity extends Activity{
 			}
 		}
 	};
-	//Í¨ÓÃÀ¶ÑÀ·µ»ØÊı¾İ´¦Àí¸ñÊ½
+	//é€šç”¨è“ç‰™è¿”å›æ•°æ®å¤„ç†æ ¼å¼
 	private void commonBleRespData(final String data){
-		//Êı¾İĞ£Ñé
+		//æ•°æ®æ ¡éªŒ
 		if(data.isEmpty()){
 			return;
-			//×îĞ¡³¤¶ÈÎª7 £ºÖ¡Í·+Ö¸Áî+crcĞ£Ñé
+			//æœ€å°é•¿åº¦ä¸º7 ï¼šå¸§å¤´+æŒ‡ä»¤+crcæ ¡éªŒ
 		}else if(data.length()>7 && data.startsWith("DA")){
-			//1¡¢½ØÈ¡Êı¾İ½øĞĞÇĞ¸îĞ£Ñé   ×îºóËÄÎ» ×÷ÎªcrcĞ£ÑéÖµ    ²é¿´ÊÇ·ñÕıÈ·
+			//1ã€æˆªå–æ•°æ®è¿›è¡Œåˆ‡å‰²æ ¡éªŒ   æœ€åå››ä½ ä½œä¸ºcrcæ ¡éªŒå€¼    æŸ¥çœ‹æ˜¯å¦æ­£ç¡®
 			String midData ="";
 			if(data.length()==8){
-				//½áÊø Ã»ÓĞÊı¾İ×Ö¶Î
+				//ç»“æŸ æ²¡æœ‰æ•°æ®å­—æ®µ
 				midData="";
 			}else{
 				midData =data.substring(4, data.length()-4);
@@ -648,26 +648,26 @@ public class CopyOfMainActivity extends Activity{
 			
 			final String crc  =data.substring(data.length()-4, data.length());
 			if(checkData.get(crc)==""||checkData.get(crc)==null){
-				//Òì³£ crc´íÁË°¡
+				//å¼‚å¸¸ crcé”™äº†å•Š
 //				return;
-			//°ÑÊı¾İ×ª³Écrc Ğ£ÑéÊÇ·ñÄÜÈ¡µ½Ö°Öµ
+			//æŠŠæ•°æ®è½¬æˆcrc æ ¡éªŒæ˜¯å¦èƒ½å–åˆ°èŒå€¼
 				if(midData!=""){
 					if(checkData.get(CRC16M.getCRC3(HexCommandtoByte(midData.getBytes()))).isEmpty()){
-						//´íÂÒµÄÊı¾İ
+						//é”™ä¹±çš„æ•°æ®
 						return;
 					}else{
-						//TODO ÖØ·¢
+						//TODO é‡å‘
 					}
 				}
 			}else if(!checkData.get(crc).equals(data)){
-				//Òì³£ 
-				//TODO ÖØ·¢
+				//å¼‚å¸¸ 
+				//TODO é‡å‘
 				return;
 			}else{
-				//1¡¢ÕıÈ·¹Ø±Õ ¶¨Ê±Æ÷
+				//1ã€æ­£ç¡®å…³é—­ å®šæ—¶å™¨
 				timer.cancel();
 				timer = null;
-				//2¡¢·¢ËÍ
+				//2ã€å‘é€
 				mWebView.post(new Runnable() {
 				    @Override
 				    public void run() {
@@ -677,14 +677,14 @@ public class CopyOfMainActivity extends Activity{
 						checkStatus.remove(crc);
 						checkTime.remove(crc);
 				}});
-				//3¡¢Çå¿ÕÊı¾İ
+				//3ã€æ¸…ç©ºæ•°æ®
 				
 			}
 			
 		}
 		
 	}
-	/* ¸üĞÂÁ¬½Ó×´Ì¬ */
+	/* æ›´æ–°è¿æ¥çŠ¶æ€ */
 	private void updateConnectionState(String status) {
 //		SendDataToHtmlFucUtil.updateHtmlBleConnectStatus(status, mWebView);
 //		Message msg = new Message();
@@ -692,13 +692,13 @@ public class CopyOfMainActivity extends Activity{
 //		Bundle b = new Bundle();
 //		b.putString("connect_state", status);
 //		msg.setData(b);
-		// ½«Á¬½Ó×´Ì¬¸üĞÂµÄUIµÄtextviewÉÏ
+		// å°†è¿æ¥çŠ¶æ€æ›´æ–°çš„UIçš„textviewä¸Š
 //		myHandler.sendMessage(msg);
 //		System.out.println("connect_state:" + status);
 
 	}
 
-	/* ÒâÍ¼¹ıÂËÆ÷ */
+	/* æ„å›¾è¿‡æ»¤å™¨ */
 	private static IntentFilter makeGattUpdateIntentFilter() {
 		final IntentFilter intentFilter = new IntentFilter();
 		intentFilter.addAction(BluetoothLeService.ACTION_GATT_CONNECTED);
@@ -711,8 +711,8 @@ public class CopyOfMainActivity extends Activity{
 
 	/**
 	 * @Title: displayGattServices
-	 * @Description: TODO(´¦ÀíÀ¶ÑÀ·şÎñ)
-	 * @param ÎŞ
+	 * @Description: TODO(å¤„ç†è“ç‰™æœåŠ¡)
+	 * @param æ— 
 	 * @return void
 	 * @throws
 	 */
@@ -724,23 +724,23 @@ public class CopyOfMainActivity extends Activity{
 		String unknownServiceString = "unknown_service";
 		String unknownCharaString = "unknown_characteristic";
 
-		// ·şÎñÊı¾İ,¿ÉÀ©Õ¹ÏÂÀ­ÁĞ±íµÄµÚÒ»¼¶Êı¾İ
+		// æœåŠ¡æ•°æ®,å¯æ‰©å±•ä¸‹æ‹‰åˆ—è¡¨çš„ç¬¬ä¸€çº§æ•°æ®
 		ArrayList<HashMap<String, String>> gattServiceData = new ArrayList<HashMap<String, String>>();
 
-		// ÌØÕ÷Êı¾İ£¨Á¥ÊôÓÚÄ³Ò»¼¶·şÎñÏÂÃæµÄÌØÕ÷Öµ¼¯ºÏ£©
+		// ç‰¹å¾æ•°æ®ï¼ˆéš¶å±äºæŸä¸€çº§æœåŠ¡ä¸‹é¢çš„ç‰¹å¾å€¼é›†åˆï¼‰
 		ArrayList<ArrayList<HashMap<String, String>>> gattCharacteristicData = new ArrayList<ArrayList<HashMap<String, String>>>();
 
-		// ²¿·Ö²ã´Î£¬ËùÓĞÌØÕ÷Öµ¼¯ºÏ
+		// éƒ¨åˆ†å±‚æ¬¡ï¼Œæ‰€æœ‰ç‰¹å¾å€¼é›†åˆ
 		mGattCharacteristics = new ArrayList<ArrayList<BluetoothGattCharacteristic>>();
 
 		// Loops through available GATT Services.
 		for (BluetoothGattService gattService : gattServices) {
 
-			// »ñÈ¡·şÎñÁĞ±í
+			// è·å–æœåŠ¡åˆ—è¡¨
 			HashMap<String, String> currentServiceData = new HashMap<String, String>();
 			uuid = gattService.getUuid().toString();
 
-			// ²é±í£¬¸ù¾İ¸Ãuuid»ñÈ¡¶ÔÓ¦µÄ·şÎñÃû³Æ¡£SampleGattAttributesÕâ¸ö±íĞèÒª×Ô¶¨Òå¡£
+			// æŸ¥è¡¨ï¼Œæ ¹æ®è¯¥uuidè·å–å¯¹åº”çš„æœåŠ¡åç§°ã€‚SampleGattAttributesè¿™ä¸ªè¡¨éœ€è¦è‡ªå®šä¹‰ã€‚
 
 			gattServiceData.add(currentServiceData);
 
@@ -748,14 +748,14 @@ public class CopyOfMainActivity extends Activity{
 
 			ArrayList<HashMap<String, String>> gattCharacteristicGroupData = new ArrayList<HashMap<String, String>>();
 
-			// ´Óµ±Ç°Ñ­»·ËùÖ¸ÏòµÄ·şÎñÖĞ¶ÁÈ¡ÌØÕ÷ÖµÁĞ±í
+			// ä»å½“å‰å¾ªç¯æ‰€æŒ‡å‘çš„æœåŠ¡ä¸­è¯»å–ç‰¹å¾å€¼åˆ—è¡¨
 			List<BluetoothGattCharacteristic> gattCharacteristics = gattService
 					.getCharacteristics();
 
 			ArrayList<BluetoothGattCharacteristic> charas = new ArrayList<BluetoothGattCharacteristic>();
 
 			// Loops through available Characteristics.
-			// ¶ÔÓÚµ±Ç°Ñ­»·ËùÖ¸ÏòµÄ·şÎñÖĞµÄÃ¿Ò»¸öÌØÕ÷Öµ
+			// å¯¹äºå½“å‰å¾ªç¯æ‰€æŒ‡å‘çš„æœåŠ¡ä¸­çš„æ¯ä¸€ä¸ªç‰¹å¾å€¼
 			for (final BluetoothGattCharacteristic gattCharacteristic : gattCharacteristics) {
 				charas.add(gattCharacteristic);
 				HashMap<String, String> currentCharaData = new HashMap<String, String>();
@@ -763,7 +763,7 @@ public class CopyOfMainActivity extends Activity{
 
 				if (gattCharacteristic.getUuid().toString()
 						.equals(HEART_RATE_MEASUREMENT)) {
-					// ²âÊÔ¶ÁÈ¡µ±Ç°CharacteristicÊı¾İ£¬»á´¥·¢mOnDataAvailable.onCharacteristicRead()
+					// æµ‹è¯•è¯»å–å½“å‰Characteristicæ•°æ®ï¼Œä¼šè§¦å‘mOnDataAvailable.onCharacteristicRead()
 					mhandler.postDelayed(new Runnable() {
 
 						@Override
@@ -774,12 +774,12 @@ public class CopyOfMainActivity extends Activity{
 						}
 					}, 200);
 
-					// ½ÓÊÜCharacteristic±»Ğ´µÄÍ¨Öª,ÊÕµ½À¶ÑÀÄ£¿éµÄÊı¾İºó»á´¥·¢mOnDataAvailable.onCharacteristicWrite()
+					// æ¥å—Characteristicè¢«å†™çš„é€šçŸ¥,æ”¶åˆ°è“ç‰™æ¨¡å—çš„æ•°æ®åä¼šè§¦å‘mOnDataAvailable.onCharacteristicWrite()
 					mBluetoothLeService.setCharacteristicNotification(
 							gattCharacteristic, true);
 					target_chara = gattCharacteristic;
-					// ÉèÖÃÊı¾İÄÚÈİ
-					// ÍùÀ¶ÑÀÄ£¿éĞ´ÈëÊı¾İ
+					// è®¾ç½®æ•°æ®å†…å®¹
+					// å¾€è“ç‰™æ¨¡å—å†™å…¥æ•°æ®
 					// mBluetoothLeService.writeCharacteristic(gattCharacteristic);
 				}
 				List<BluetoothGattDescriptor> descriptors = gattCharacteristic
@@ -787,7 +787,7 @@ public class CopyOfMainActivity extends Activity{
 				for (BluetoothGattDescriptor descriptor : descriptors) {
 					System.out.println("---descriptor UUID:"
 							+ descriptor.getUuid());
-					// »ñÈ¡ÌØÕ÷ÖµµÄÃèÊö
+					// è·å–ç‰¹å¾å€¼çš„æè¿°
 					mBluetoothLeService.getCharacteristicDescriptor(descriptor);
 					// mBluetoothLeService.setCharacteristicNotification(gattCharacteristic,
 					// true);
@@ -795,18 +795,18 @@ public class CopyOfMainActivity extends Activity{
 
 				gattCharacteristicGroupData.add(currentCharaData);
 			}
-			// °´ÏÈºóË³Ğò£¬·Ö²ã´Î·ÅÈëÌØÕ÷Öµ¼¯ºÏÖĞ£¬Ö»ÓĞÌØÕ÷Öµ
+			// æŒ‰å…ˆåé¡ºåºï¼Œåˆ†å±‚æ¬¡æ”¾å…¥ç‰¹å¾å€¼é›†åˆä¸­ï¼Œåªæœ‰ç‰¹å¾å€¼
 			mGattCharacteristics.add(charas);
-			// ¹¹¼şµÚ¶ş¼¶À©Õ¹ÁĞ±í£¨·şÎñÏÂÃæµÄÌØÕ÷Öµ£©
+			// æ„ä»¶ç¬¬äºŒçº§æ‰©å±•åˆ—è¡¨ï¼ˆæœåŠ¡ä¸‹é¢çš„ç‰¹å¾å€¼ï¼‰
 			gattCharacteristicData.add(gattCharacteristicGroupData);
 
 		}
 
 	}
 
-	// ĞÂ¹æÔò
+	// æ–°è§„åˆ™
 	private String tenTohex(String tempC, String tempV) {
-		// ¾ÙÀı£º
+		// ä¸¾ä¾‹ï¼š
 		int tempA = 0;
 		if (tempV.indexOf(".") > 0) {
 			String[] tsr = tempV.split("\\.");
@@ -834,7 +834,7 @@ public class CopyOfMainActivity extends Activity{
 		return tempStr1 + " " + tempStr2.substring(0, 2) + " "
 				+ tempStr2.substring(2, 4);
 	}
-	// Ê®Áù½øÖÆµÄ×Ö·û´®×ª»»³ÉbyteÊı×é
+	// åå…­è¿›åˆ¶çš„å­—ç¬¦ä¸²è½¬æ¢æˆbyteæ•°ç»„
 		public static byte[] HexCommandtoByte(byte[] data) {
 				if (data == null) {
 					return null;
@@ -868,12 +868,12 @@ public class CopyOfMainActivity extends Activity{
 		 */
 		@JavascriptInterface
 		public void callSendDataToBle(String pageFrom,String data,String crcCode) {
-			//0¡¢³õÊ¼»¯ ¿ªÊ¼¶¨Ê±Æ÷
+			//0ã€åˆå§‹åŒ– å¼€å§‹å®šæ—¶å™¨
 			CopyOfMainActivity.requestFromHtmlInit(pageFrom, data, crcCode);
-				//java.util.Timer.schedule(TimerTask task, long delay, long period)£ºÕâ¸ö·½·¨ÊÇËµ£¬delay/1000ÃëºóÖ´ĞĞtask,
-				//È»ºó½ø¹ıperiod/1000ÃëÔÙ´ÎÖ´ĞĞtask£¬Õâ¸öÓÃÓÚÑ­»·ÈÎÎñ£¬Ö´ĞĞÎŞÊı´Î£¬µ±È»£¬Äã¿ÉÒÔÓÃtimer.cancel();È¡Ïû¼ÆÊ±Æ÷µÄÖ´ĞĞ¡£
+				//java.util.Timer.schedule(TimerTask task, long delay, long period)ï¼šè¿™ä¸ªæ–¹æ³•æ˜¯è¯´ï¼Œdelay/1000ç§’åæ‰§è¡Œtask,
+				//ç„¶åè¿›è¿‡period/1000ç§’å†æ¬¡æ‰§è¡Œtaskï¼Œè¿™ä¸ªç”¨äºå¾ªç¯ä»»åŠ¡ï¼Œæ‰§è¡Œæ— æ•°æ¬¡ï¼Œå½“ç„¶ï¼Œä½ å¯ä»¥ç”¨timer.cancel();å–æ¶ˆè®¡æ—¶å™¨çš„æ‰§è¡Œã€‚
 			initTimer();
-			//1¡¢¸ÄĞ´Ö±½Ó ·¢×Ö·û´®
+			//1ã€æ”¹å†™ç›´æ¥ å‘å­—ç¬¦ä¸²
 			String regex = "(.{2})";
 			data = data.replaceAll (regex, "$1 ");
 			target_chara.setValue(HexCommandtoByte(data.getBytes()));
@@ -889,35 +889,35 @@ public class CopyOfMainActivity extends Activity{
 			if("0xE1".equals(type)){
 				sendData ="DA E1 F8 C1";
 			}else{
-				//²»¶Ô½áÊø
+				//ä¸å¯¹ç»“æŸ
 				return;
 			}
 			byte[] buff = null;
 			buff = HexCommandtoByte(sendData.getBytes());
-			//2¡¢¸ÄĞ´Ö±½Ó ·¢×Ö·û´®
+			//2ã€æ”¹å†™ç›´æ¥ å‘å­—ç¬¦ä¸²
 			target_chara.setValue(buff);
 			mBluetoothLeService.writeCharacteristic(target_chara);
 		}
 		/**
-		 * ÇĞ¶Ï À¶ÑÀÁ¬½Ó
+		 * åˆ‡æ–­ è“ç‰™è¿æ¥
 		 * @return
 		 */
 		@JavascriptInterface
 		public String closeBleConnect() {
-			//½«Á¬½Ó×´Ì¬ÖÃÎªÎ´Á¬½Ó
+			//å°†è¿æ¥çŠ¶æ€ç½®ä¸ºæœªè¿æ¥
 			status="disconnected";
 			return Constant.SUC_CODE;
 		}
 		/**
-		 * À¶ÑÀ ·µ»ØµÄÊı¾İ
+		 * è“ç‰™ è¿”å›çš„æ•°æ®
 		 * @return
 		 */
 		@JavascriptInterface
 		public String getBleRespMsg() {
 			BleRespBean data =new BleRespBean();
 			if(bleRespInfo.isEmpty() ||bleRespInfo=="00" ||bleRespInfo=="empty"){
-				//È¡²âÊÔÖµ E1
-				//Ö¡Í·(oxDA)    ÃüÁî£¨Ò»¸ö×Ö½Ú£©	Êı¾İ	Ğ£Ñé£¨ÃüÁî+Êı¾İ£©
+				//å–æµ‹è¯•å€¼ E1
+				//å¸§å¤´(oxDA)    å‘½ä»¤ï¼ˆä¸€ä¸ªå­—èŠ‚ï¼‰	æ•°æ®	æ ¡éªŒï¼ˆå‘½ä»¤+æ•°æ®ï¼‰
 				//DA E1 00 00 00 00 
 				//
 				bleRespInfo="1111 6666";
@@ -926,28 +926,28 @@ public class CopyOfMainActivity extends Activity{
 			return data.toString();
 		}
 		/**
-		 * getready ¿ªÊ¼º¸½Ó
+		 * getready å¼€å§‹ç„Šæ¥
 		 */
 		@JavascriptInterface
 		public String getReadyGo() {
-			//1¡¢ÅĞ¶ÏÊÇ·ñÁ¬½ÓÁË£¬ÇÒ·µ»ØÊı¾İÁË
+			//1ã€åˆ¤æ–­æ˜¯å¦è¿æ¥äº†ï¼Œä¸”è¿”å›æ•°æ®äº†
 //			if(!mConnected){
-//				return "ÇëÏÈÁ¬½ÓÉÏÀ¶ÑÀ";
+//				return "è¯·å…ˆè¿æ¥ä¸Šè“ç‰™";
 //			}
 //			else if(resp_bit_data.getText().toString().equals(Constant.EMPTY_TEXT)){
-//				Toast.makeText(Ble_Activity.this, "µ±Ç°À¶ÑÀÎ´·µ»ØÊı¾İ", Toast.LENGTH_LONG)
+//				Toast.makeText(Ble_Activity.this, "å½“å‰è“ç‰™æœªè¿”å›æ•°æ®", Toast.LENGTH_LONG)
 //				.show();
 //				return ;
 //			}
-			//2¡¢È¥³ıÔ¤ÖÃµçÑ¹ºÍÔ¤ÖÃµçÁ÷Öµ
+			//2ã€å»é™¤é¢„ç½®ç”µå‹å’Œé¢„ç½®ç”µæµå€¼
 			String tempV = "10";
 			String tempC ="20";
-			//3¡¢ÅĞ¶ÏÓÃ»§ÊÇ·ñÊäÈë begin 16½øÖÆ¿ªÊ¼--Èç¹ûÓÃ»§Ã»ÊäÈëÈ¡Ö®Ç°µ¥Æ¬»ú·µ»ØµÄÊı¾İ
+			//3ã€åˆ¤æ–­ç”¨æˆ·æ˜¯å¦è¾“å…¥ begin 16è¿›åˆ¶å¼€å§‹--å¦‚æœç”¨æˆ·æ²¡è¾“å…¥å–ä¹‹å‰å•ç‰‡æœºè¿”å›çš„æ•°æ®
 			if(tempC.isEmpty()){
 //				tempC =preCurrentNum.getText().toString().replaceAll("A", "");
 			}else{
 //				if(Integer.valueOf(tempC)<5){
-//					Toast.makeText(Ble_Activity.this, "Ô¤ÖÃµçÁ÷²»ÄÜĞ¡ÓÚ5V", Toast.LENGTH_LONG)
+//					Toast.makeText(Ble_Activity.this, "é¢„ç½®ç”µæµä¸èƒ½å°äº5V", Toast.LENGTH_LONG)
 //					.show();
 //					return;
 //				}
@@ -960,7 +960,7 @@ public class CopyOfMainActivity extends Activity{
 			byte[] buff = null;
 			buff = HexCommandtoByte(tenTohex.getBytes());
 //			end
-			//2¡¢¸ÄĞ´Ö±½Ó ·¢×Ö·û´®
+			//2ã€æ”¹å†™ç›´æ¥ å‘å­—ç¬¦ä¸²
 //			target_chara.setValue(tenTohex);
 			target_chara.setValue(buff);
 			mBluetoothLeService.writeCharacteristic(target_chara);
@@ -968,19 +968,19 @@ public class CopyOfMainActivity extends Activity{
 		}
 		
 		/**
-		 *µã»÷Á¬½ÓÀ¶ÑÀ
+		 *ç‚¹å‡»è¿æ¥è“ç‰™
 		 * @return
 		 */
 		@JavascriptInterface
 		public void setBleConnect(String address) {
 			if (mScanning)
 			{
-				/* Í£Ö¹É¨ÃèÉè±¸ */
+				/* åœæ­¢æ‰«æè®¾å¤‡ */
 				mBluetoothAdapter.stopLeScan(mLeScanCallback);
 				mScanning = false;
 			}
-			//Æô¶¯À¶ÑÀ Ô­À´ble_activityµÄÂß¼­
-			/* Æô¶¯À¶ÑÀservice */
+			//å¯åŠ¨è“ç‰™ åŸæ¥ble_activityçš„é€»è¾‘
+			/* å¯åŠ¨è“ç‰™service */
 //			Intent gattServiceIntent = new Intent(this, BluetoothLeService.class);
 //			bindService(gattServiceIntent, mServiceConnection, BIND_AUTO_CREATE);
 //			mDeviceAddress="78:04:73:00:AC:3D";
@@ -988,7 +988,7 @@ public class CopyOfMainActivity extends Activity{
 			connectBle();
 		}
 		/**
-		 *»ñÈ¡ bleÀ¶ÑÀ·µ»ØµÄlist
+		 *è·å– bleè“ç‰™è¿”å›çš„list
 		 * @return
 		 */
 		@JavascriptInterface
@@ -1005,7 +1005,7 @@ public class CopyOfMainActivity extends Activity{
 			
 		}
 		/**
-		 *»ñÈ¡ É¨Ãè°´Å¥ ÎÄ×Ö
+		 *è·å– æ‰«ææŒ‰é’® æ–‡å­—
 		 * @return
 		 */
 		@JavascriptInterface
@@ -1015,7 +1015,7 @@ public class CopyOfMainActivity extends Activity{
 		}
 		
 		/**
-		 * ¿ªÊ¼É¨Ãè
+		 * å¼€å§‹æ‰«æ
 		 * @return
 		 */
 		@JavascriptInterface
@@ -1031,15 +1031,15 @@ public class CopyOfMainActivity extends Activity{
 //			}});
 			
 			
-//			updateHtmlBleScanBtnText("²âÊÔ·Å»Ø", mWebView);
+//			updateHtmlBleScanBtnText("æµ‹è¯•æ”¾å›", mWebView);
 //			 Handler mainHandler = new Handler(Looper.getMainLooper());
 //			    mainHandler.post(new Runnable() {
 //			        @Override
 //			        public void run() {
-			            //ÒÑÔÚÖ÷Ïß³ÌÖĞ£¬¿ÉÒÔ¸üĞÂUI
+			            //å·²åœ¨ä¸»çº¿ç¨‹ä¸­ï¼Œå¯ä»¥æ›´æ–°UI
 //			        	updateHtmlBleScanBtnText(11+"");
 //			 mWebView.evaluateJavascript("aa('"+1+"')", new ValueCallback<String>() {
-  		    	//´¦Àí·µ»ØÖµ
+  		    	//å¤„ç†è¿”å›å€¼
 //  		    	@Override
 //  		        public void onReceiveValue(String value) {
 //  		        }
@@ -1050,7 +1050,7 @@ public class CopyOfMainActivity extends Activity{
 //			 ((MainActivity) context).runOnUiThread(new Runnable() {
 //		            @Override
 //		            public void run() {
-//		                //´ËÊ±ÒÑÔÚÖ÷Ïß³ÌÖĞ£¬¿ÉÒÔ¸üĞÂUIÁË
+//		                //æ­¤æ—¶å·²åœ¨ä¸»çº¿ç¨‹ä¸­ï¼Œå¯ä»¥æ›´æ–°UIäº†
 //		            	mWebView.loadUrl("javascript:aa("+"'"+11+"'"+")");
 //		            }
 //		        });
@@ -1064,7 +1064,7 @@ public class CopyOfMainActivity extends Activity{
 			
 		}
 		/**
-		 * »ñÈ¡Á¬½Ó×´Ì¬
+		 * è·å–è¿æ¥çŠ¶æ€
 		 * @return
 		 */
 		@JavascriptInterface
@@ -1085,69 +1085,69 @@ public class CopyOfMainActivity extends Activity{
 			return "20:29:20";
 		}
 
-		// ÉèÖÃÖµ ¸ù¾İSharedPreferences ËéÆ¬´æ´¢
+		// è®¾ç½®å€¼ æ ¹æ®SharedPreferences ç¢ç‰‡å­˜å‚¨
 		@JavascriptInterface
 		public String setSettingInfo(String key, String value) {
 			return SaveUtil.updateDataBykey(context, key, value);
 		}
 
-		// »ñÈ¡ÉèÖÃÖµ ¸ù¾İSharedPreferences ËéÆ¬´æ´¢
+		// è·å–è®¾ç½®å€¼ æ ¹æ®SharedPreferences ç¢ç‰‡å­˜å‚¨
 		@JavascriptInterface
 		public String getSettingInfo(String key) {
 			return SaveUtil.getDataBykey(context, key);
 		}
 
-		// »ñÈ¡ÉèÖÃÖµ ¸ù¾İsql ËéÆ¬´æ´¢
+		// è·å–è®¾ç½®å€¼ æ ¹æ®sql ç¢ç‰‡å­˜å‚¨
 		@JavascriptInterface
 		public void testSqliteset() {
-			// »ñÈ¡Êı¾İ¿â²Ù×÷¶ÔÏó
+			// è·å–æ•°æ®åº“æ“ä½œå¯¹è±¡
 			SQLiteDBUtil db = new SQLiteDBUtil(getApplicationContext());
 			SQLiteDatabase sd = db.getWritableDatabase();
-			// 1¡¢·½·¨Ò»
-			// ´´½¨sqlÓï¾ä
+			// 1ã€æ–¹æ³•ä¸€
+			// åˆ›å»ºsqlè¯­å¥
 			// String sql =
 			// "insert into weldInfo(machinedId,weldType,dataTAype,setInfo,noteInfo,weldBeginTime,weldEndTime,weldConnectTime,memo,weldType)"
 			// + "values('"+name+"','"+age+"')";
-			// Ö´ĞĞsqlÓï¾ä
+			// æ‰§è¡Œsqlè¯­å¥
 			// sd.execSQL(sql);
-			// ¹Ø±ÕÊı¾İ¿â
+			// å…³é—­æ•°æ®åº“
 			// db.close();
-			// 2¡¢·½·¨¶ş
-			// ÊµÀı»¯³£Á¿Öµ
+			// 2ã€æ–¹æ³•äºŒ
+			// å®ä¾‹åŒ–å¸¸é‡å€¼
 			ContentValues cValue = new ContentValues();
 			cValue.put("machinedId", "A0001");
-			cValue.put("machinedName", "ÂÌµØ½ğ·şÒ»ºÅ»ú");
+			cValue.put("machinedName", "ç»¿åœ°é‡‘æœä¸€å·æœº");
 			cValue.put("weldType", "MMA");
 			cValue.put("dataType", "0");
 			cValue.put(
 					"setInfo",
 					"{\"weldType\":\"MIG SYN\",\"options\":[{\"name\":\"MODE\",\"value\":\"21T\",\"unit\":\"T\"},{\"name\":\"MATERIAL\",\"value\":\"FE\"},{\"name\":\"GAS\",\"value\":\"Ar\"},{\"name\":\"DIAMETER\",\"value\":\"0.6mm\"},{\"name\":\"THICKNESS\",\"value\":\"0.6mm\"},{\"name\":\"INDUCTANCE\",\"value\":\"90\",\"unit\":\"A\"},{\"name\":\"SPEED\",\"value\":\"8\",\"unit\":\"BIG1\"}]}");
-			cValue.put("noteInfo", "ÎÒµÄ±¸×¢");
+			cValue.put("noteInfo", "æˆ‘çš„å¤‡æ³¨");
 			cValue.put("weldBeginTime", "2018-11-09 12:20:11");
 			cValue.put("weldEndTime", "2018-11-09 15:20:11");
 			cValue.put("weldConnectTime", "3.7");
-			cValue.put("memo", "ĞÂ½¨±¸×¢");
+			cValue.put("memo", "æ–°å»ºå¤‡æ³¨");
 			cValue.put("rec_stat", "1");
 			cValue.put("creator", "admin");
 			cValue.put("modifier", "admin");
 			Log.v("aaaa", DateUtil.getCurrentDateyyyyMMddHHmmss());
 			cValue.put("cre_tm", DateUtil.getCurrentDateyyyyMMddHHmmss());
 			cValue.put("up_tm", DateUtil.getCurrentDateyyyyMMddHHmmss());
-			// µ÷ÓÃinsert()·½·¨²åÈëÊı¾İ
+			// è°ƒç”¨insert()æ–¹æ³•æ’å…¥æ•°æ®
 			sd.insert("weldInfo", null, cValue);
 			db.close();
 		}
 
-		// »ñÈ¡ÉèÖÃÖµ ¸ù¾İsql ËéÆ¬´æ´¢
+		// è·å–è®¾ç½®å€¼ æ ¹æ®sql ç¢ç‰‡å­˜å‚¨
 		@JavascriptInterface
 		public String testSqliteget() {
-			// ½«ËùÓĞµÄĞÅÏ¢Õ¹Ê¾ÔÚÎÄ±¾¿òÀï
+			// å°†æ‰€æœ‰çš„ä¿¡æ¯å±•ç¤ºåœ¨æ–‡æœ¬æ¡†é‡Œ
 			String s = "";
 			SQLiteDBUtil db = new SQLiteDBUtil(getApplicationContext());
 			SQLiteDatabase sd = db.getReadableDatabase();
 			String sql = "select id,machinedId,machinedName,weldType,dataType,setInfo,noteInfo,weldBeginTime"
 					+ ",weldEndTime,weldConnectTime,memo,rec_stat,creator,modifier,cre_tm,up_tm"
-					+ " from weldInfo  ORDER BY cre_tm DESC";// ¸ù¾İÊ±¼äÅÅĞò
+					+ " from weldInfo  ORDER BY cre_tm DESC";// æ ¹æ®æ—¶é—´æ’åº
 			Cursor cursor = sd.rawQuery(sql, null);
 			WeldInfo weldInfo = new WeldInfo();
 			List<WeldInfo> wldlist = new ArrayList<WeldInfo>();
@@ -1181,32 +1181,32 @@ public class CopyOfMainActivity extends Activity{
 			return wldlist.toString();
 		}
 
-		// »ñÈ¡ÉèÖÃÖµ¸ü¸üĞÂ
+		// è·å–è®¾ç½®å€¼æ›´æ›´æ–°
 		@JavascriptInterface
 		public String testSqliteupdate() {
-			// ½«ËùÓĞµÄĞÅÏ¢Õ¹Ê¾ÔÚÎÄ±¾¿òÀï
+			// å°†æ‰€æœ‰çš„ä¿¡æ¯å±•ç¤ºåœ¨æ–‡æœ¬æ¡†é‡Œ
 			String s = "";
 			SQLiteDBUtil db = new SQLiteDBUtil(getApplicationContext());
 			SQLiteDatabase sd = db.getReadableDatabase();
-			// ÊµÀı»¯ÄÚÈİÖµ
+			// å®ä¾‹åŒ–å†…å®¹å€¼
 			ContentValues values = new ContentValues();
-			// ÔÚvaluesÖĞÌí¼ÓÄÚÈİ
+			// åœ¨valuesä¸­æ·»åŠ å†…å®¹
 			values.put("setInfo", "{'current':'10','valatge':'20'}");
-			// ĞŞ¸ÄÌõ¼ş
+			// ä¿®æ”¹æ¡ä»¶
 			String whereClause = "id=?";
-			// ĞŞ¸ÄÌí¼Ó²ÎÊı
+			// ä¿®æ”¹æ·»åŠ å‚æ•°
 			String[] whereArgs = { String.valueOf(1) };
-			// ĞŞ¸Ä
+			// ä¿®æ”¹
 			// sd.update("weldInfo",values,whereClause,whereArgs);
 			sd.update("weldInfo", values, null, null);
 			db.close();
 			return s;
 		}
 
-		// »ñÈ¡ÉèÖÃÖµ¸ü¸üĞÂ
+		// è·å–è®¾ç½®å€¼æ›´æ›´æ–°
 		@JavascriptInterface
 		public String testSqlitedelete() {
-			// ½«ËùÓĞµÄĞÅÏ¢Õ¹Ê¾ÔÚÎÄ±¾¿òÀï
+			// å°†æ‰€æœ‰çš„ä¿¡æ¯å±•ç¤ºåœ¨æ–‡æœ¬æ¡†é‡Œ
 			String s = "";
 			SQLiteDBUtil db = new SQLiteDBUtil(getApplicationContext());
 			SQLiteDatabase sd = db.getReadableDatabase();
@@ -1216,7 +1216,7 @@ public class CopyOfMainActivity extends Activity{
 			return s;
 		}
 	}
-	// Androidµ÷ÓÃÓĞ·µ»ØÖµjs·½·¨
+	// Androidè°ƒç”¨æœ‰è¿”å›å€¼jsæ–¹æ³•
 //	@TargetApi(Build.VERSION_CODES.KITKAT)
 //	public void updateHtmlBleConnectStatus(String connect_status) {
 //
@@ -1231,7 +1231,7 @@ public class CopyOfMainActivity extends Activity{
 //	}
 	/**
 	 * 
-	 * É¨Ãè°´Å¥ÎÄ×Ö
+	 * æ‰«ææŒ‰é’®æ–‡å­—
 	 */
 	@TargetApi(Build.VERSION_CODES.KITKAT)
 	public  void updateHtmlBleScanBtnText(String text) {
@@ -1240,7 +1240,7 @@ public class CopyOfMainActivity extends Activity{
 //            @Override
 //            public void run() {
             	 mWebView.evaluateJavascript("aa('"+1+"')", new ValueCallback<String>() {
-     		    	//´¦Àí·µ»ØÖµ
+     		    	//å¤„ç†è¿”å›å€¼
      		    	@Override
      		        public void onReceiveValue(String value) {
      		        }
@@ -1249,23 +1249,23 @@ public class CopyOfMainActivity extends Activity{
 //        });
 		   
 	}
-	/***************************** À´×Ôble_activitybegig ****************************************/
+	/***************************** æ¥è‡ªble_activitybegig ****************************************/
 	/************************************ begin *************************************/
 	/********************************************************************************/
 	private static void requestFromHtmlInit(String pageFrom,String data,String crcCode){
-		//µ±Ç°Ò³Ãæ ÓĞÖµÁË·µ»Ø
+		//å½“å‰é¡µé¢ æœ‰å€¼äº†è¿”å›
 		if(pageFrom.equals(checkPage.get(crcCode))){
 			return;
 		}
-		checkPage.put(crcCode, pageFrom);//Ò³ÃæÀ´Ô´
-		checkStatus.put(crcCode, false);//Ä¬ÈÏÇëÇó»¹Î´³É¹¦
-		checkData.put(crcCode, data);//Òª·¢ËÍµÄÊı¾İ
-		checkTime.put(crcCode, new Date().getTime());//Ê±¼ä´Á
+		checkPage.put(crcCode, pageFrom);//é¡µé¢æ¥æº
+		checkStatus.put(crcCode, false);//é»˜è®¤è¯·æ±‚è¿˜æœªæˆåŠŸ
+		checkData.put(crcCode, data);//è¦å‘é€çš„æ•°æ®
+		checkTime.put(crcCode, new Date().getTime());//æ—¶é—´æˆ³
 	}
 	private void reponseFromBleInit(String crcCode){
-		// ÓĞÖµ ·µ»ØÁË
+		// æœ‰å€¼ è¿”å›äº†
 		if(!checkPage.get(crcCode).isEmpty()){
-			checkStatus.put(crcCode, true);//³É¹¦ ²»ĞèÒªÖØ·¢
+			checkStatus.put(crcCode, true);//æˆåŠŸ ä¸éœ€è¦é‡å‘
 		}
 	}
 }
